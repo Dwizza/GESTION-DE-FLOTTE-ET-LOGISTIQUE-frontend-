@@ -1,0 +1,23 @@
+<aside class="sidebar-container" [class.closed]="!isOpen">
+    <div class="sidebar-header">
+        <div class="logo">
+            <i class="ri-route-fill"></i>
+            <span class="logo-text" *ngIf="isOpen">FleetSync</span>
+        </div>
+    </div>
+
+    <nav class="sidebar-nav">
+        <ng-container *ngFor="let item of navItems">
+            <a [routerLink]="item.route" routerLinkActive="active" class="nav-item" [title]="item.label">
+                <i [class]="item.icon"></i>
+                <span class="nav-label" *ngIf="isOpen">{{ item.label }}</span>
+            </a>
+        </ng-container>
+    </nav>
+
+    <div class="sidebar-footer">
+        <div class="version-info" *ngIf="isOpen">
+            v1.0.0 Alpha
+        </div>
+    </div>
+</aside>

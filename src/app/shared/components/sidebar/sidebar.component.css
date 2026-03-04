@@ -1,0 +1,205 @@
+.sidebar-container {
+    width: 260px;
+    height: 100%;
+    /* Take full height of the padded wrapper */
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 20;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    /* Soft outer shadow */
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Subtle inner glow for glass effect */
+.sidebar-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+}
+
+.sidebar-container.closed {
+    width: 85px;
+}
+
+.sidebar-header {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-primary);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.logo i {
+    font-size: 1.8rem;
+    filter: drop-shadow(0 2px 8px rgba(255, 140, 0, 0.4));
+    background: linear-gradient(135deg, var(--color-primary) 0%, #FF6B00 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo-text {
+    color: var(--color-text);
+    transition: opacity 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Custom Scrollbar for nav */
+.sidebar-nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(var(--color-border-rgb, 150, 150, 150), 0.3);
+    border-radius: 10px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    border-radius: 16px;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+}
+
+.nav-item i {
+    font-size: 1.4rem;
+    min-width: 24px;
+    text-align: center;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.nav-label {
+    font-size: 0.95rem;
+    transition: opacity 0.3s ease;
+}
+
+.nav-item:hover {
+    background: rgba(var(--color-surface-hover-rgb, 100, 100, 100), 0.1);
+    color: var(--color-text);
+    transform: translateX(4px);
+}
+
+.nav-item.active {
+    background: linear-gradient(135deg, rgba(255, 140, 0, 0.15) 0%, rgba(255, 107, 0, 0.05) 100%);
+    color: var(--color-primary);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.1);
+    border: 1px solid rgba(255, 140, 0, 0.2);
+}
+
+.nav-item.active i {
+    transform: scale(1.15);
+    color: var(--color-primary);
+    filter: drop-shadow(0 0 8px rgba(255, 140, 0, 0.4));
+}
+
+/* Active Indicator Dash */
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 50%;
+    background: var(--color-primary);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--color-primary);
+}
+
+/* Closed state adjustments */
+.sidebar-container.closed .sidebar-header {
+    padding: 0;
+    justify-content: center;
+}
+
+.sidebar-container.closed .logo {
+    gap: 0;
+}
+
+.sidebar-container.closed .nav-item {
+    justify-content: center;
+    padding: 1rem 0;
+    border-radius: 14px;
+}
+
+.sidebar-container.closed .nav-item:hover {
+    transform: translateX(0) scale(1.05);
+}
+
+.sidebar-container.closed .nav-item.active::before {
+    left: 2px;
+}
+
+.sidebar-footer {
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 992px) {
+    .sidebar-container {
+        border-radius: 0 24px 24px 0;
+        /* Only round right side on mobile */
+        height: 100vh;
+        left: -300px;
+        position: absolute;
+    }
+
+    .sidebar-container:not(.closed) {
+        left: 0;
+        box-shadow: 20px 0 50px rgba(0, 0, 0, 0.2);
+    }
+}

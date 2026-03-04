@@ -42,7 +42,20 @@ export class LoginComponent {
     this.authService.login({ email, password }).subscribe({
       next: () => {
         this.isLoading = false;
-        this.router.navigate(['/']);
+
+        // Extract role and route accordingly
+        const role = this.authService.getUserRole();
+        if (role === 'ADMIN') {
+          this.router.navigate(['/admin']);
+        } else if (role === 'MANAGER') {
+          this.router.navigate(['/manager']);
+        } else if (role === 'CLIENT') {
+          this.router.navigate(['/client']);
+        } else {
+          // Fallback if no specific role is found
+          this.router.navigate(['/auth/login']);
+          this.errorMessage = 'Votre compte n\'est pas associé à un rôle valide.';
+        }
       },
       error: (err) => {
         this.isLoading = false;

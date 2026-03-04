@@ -1,0 +1,124 @@
+<div class="dashboard-banner">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+        <div class="banner-text">
+            <h1>Espace Administrateur</h1>
+            <p>Supervisez vos responsables de flotte et l'ensemble de vos chauffeurs.</p>
+        </div>
+        <div class="banner-actions">
+            <button class="btn-primary-glass" (click)="refreshData()">
+                <i class="ri-refresh-line"></i> Actualiser
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="dashboard-content">
+    <div class="stats-grid">
+        <!-- Stat Card: Managers -->
+        <div class="stat-card">
+            <div class="stat-icon manager-icon">
+                <i class="ri-team-fill"></i>
+            </div>
+            <div class="stat-details">
+                <h3>Managers Actifs</h3>
+                <div class="stat-value">12</div>
+                <div class="stat-trend positive"><i class="ri-arrow-up-line"></i> +2 ce mois</div>
+            </div>
+        </div>
+
+        <!-- Stat Card: Drivers -->
+        <div class="stat-card">
+            <div class="stat-icon driver-icon">
+                <i class="ri-steering-2-fill"></i>
+            </div>
+            <div class="stat-details">
+                <h3>Chauffeurs</h3>
+                <div class="stat-value">48</div>
+                <div class="stat-trend positive"><i class="ri-arrow-up-line"></i> +5 ce mois</div>
+            </div>
+        </div>
+
+        <!-- Stat Card: Total Trucks -->
+        <div class="stat-card">
+            <div class="stat-icon truck-icon">
+                <i class="ri-truck-fill"></i>
+            </div>
+            <div class="stat-details">
+                <h3>Camions</h3>
+                <div class="stat-value">34</div>
+                <div class="stat-trend neutral"><i class="ri-subtract-line"></i> Stable</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-tables">
+        <!-- Quick Actions Panel -->
+        <div class="panel quick-actions-panel">
+            <div class="panel-header">
+                <h2><i class="ri-flashlight-line"></i> Actions Rapides</h2>
+            </div>
+            <div class="panel-body">
+                <div class="action-grid">
+                    <div class="action-card" routerLink="/admin/managers" tabindex="0">
+                        <div class="action-icon-wrapper">
+                            <i class="ri-user-add-line"></i>
+                        </div>
+                        <span>Nouveau Manager</span>
+                        <p>Ajouter et configurer un profil</p>
+                    </div>
+                    <div class="action-card" routerLink="/admin/drivers" tabindex="0">
+                        <div class="action-icon-wrapper">
+                            <i class="ri-steering-fill"></i>
+                        </div>
+                        <span>Nouveau Chauffeur</span>
+                        <p>Enregistrer un conducteur</p>
+                    </div>
+                    <div class="action-card warning-action" tabindex="0">
+                        <div class="action-icon-wrapper">
+                            <i class="ri-settings-4-line"></i>
+                        </div>
+                        <span>Configuration</span>
+                        <p>Paramètres globaux</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity Panel -->
+        <div class="panel activity-panel">
+            <div class="panel-header">
+                <h2><i class="ri-history-line"></i> Activité Récente</h2>
+                <button class="btn-text">Voir tout <i class="ri-arrow-right-s-line"></i></button>
+            </div>
+            <div class="panel-body">
+                <ul class="activity-list">
+                    <li class="activity-item">
+                        <div class="activity-icon success"><i class="ri-check-double-line"></i></div>
+                        <div class="activity-text">
+                            <div class="activity-title">Nouveau Manager ajouté</div>
+                            <div class="activity-desc">Ahmed Kamal a rejoint l'équipe</div>
+                        </div>
+                        <span class="activity-time">2h</span>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon warning"><i class="ri-error-warning-line"></i></div>
+                        <div class="activity-text">
+                            <div class="activity-title">Alerte Chauffeur</div>
+                            <div class="activity-desc">Brahim a signalé un retard sur le trajet T-402</div>
+                        </div>
+                        <span class="activity-time">5h</span>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon info"><i class="ri-truck-line"></i></div>
+                        <div class="activity-text">
+                            <div class="activity-title">Mise à jour Flotte</div>
+                            <div class="activity-desc">5 nouveaux camions assignés à l'inventaire</div>
+                        </div>
+                        <span class="activity-time">Hier</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,13 @@
 <div class="split-layout">
     <!-- Left Side: Form -->
-    <div class="form-container">
+    <div class="form-container relative-container">
+
+        <!-- Local Theme Toggle -->
+        <button class="theme-toggle-local" (click)="themeService.toggleTheme()"
+            [attr.aria-label]="themeService.isDarkMode() ? 'Passer au mode clair' : 'Passer au mode sombre'">
+            <i [class]="themeService.isDarkMode() ? 'ri-sun-line' : 'ri-moon-line'"></i>
+        </button>
+
         <div class="auth-card">
             <div class="auth-header">
                 <h2>Bienvenue</h2>

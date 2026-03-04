@@ -1,0 +1,96 @@
+.app-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: var(--color-bg);
+    transition: background-color 0.4s ease;
+    position: relative;
+}
+
+/* Atmospheric Glowing Background for the whole app */
+.app-container::before {
+    content: '';
+    position: fixed;
+    top: -20vh;
+    left: -10vw;
+    width: 60vw;
+    height: 60vh;
+    background: radial-gradient(circle, rgba(255, 140, 0, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.app-container::after {
+    content: '';
+    position: fixed;
+    bottom: -20vh;
+    right: -10vw;
+    width: 50vw;
+    height: 50vh;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.app-sidebar-wrapper {
+    z-index: 100;
+    transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 1.5rem 0 1.5rem 1.5rem;
+    /* Floating padding */
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.app-content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+.app-main-content {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar for Main Content */
+.app-main-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.app-main-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.app-main-content::-webkit-scrollbar-thumb {
+    background: rgba(150, 150, 150, 0.2);
+    border-radius: 10px;
+}
+
+.app-main-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 140, 0, 0.5);
+}
+
+@media (max-width: 992px) {
+    .app-sidebar-wrapper {
+        padding: 0;
+        /* Reset for mobile slide-in */
+        position: absolute;
+    }
+
+    .app-main-content {
+        padding: 1rem;
+    }
+}

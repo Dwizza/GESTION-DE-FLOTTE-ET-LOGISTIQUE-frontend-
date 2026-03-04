@@ -1,0 +1,40 @@
+<header class="app-header">
+    <div class="header-left">
+        <button class="menu-btn" (click)="toggleSidebar()" aria-label="Toggle menu">
+            <i class="ri-menu-line"></i>
+        </button>
+        <div class="search-bar">
+            <i class="ri-search-line"></i>
+            <input type="text" placeholder="Rechercher..." />
+        </div>
+    </div>
+
+    <div class="header-right">
+        <!-- Theme Toggle -->
+        <button class="icon-btn theme-btn" (click)="themeService.toggleTheme()"
+            [attr.aria-label]="themeService.isDarkMode() ? 'Passer au mode clair' : 'Passer au mode sombre'">
+            <i [class]="themeService.isDarkMode() ? 'ri-sun-line' : 'ri-moon-line'"></i>
+        </button>
+
+        <!-- Notifications Placeholder -->
+        <button class="icon-btn notification-btn">
+            <i class="ri-notification-3-line"></i>
+            <span class="badge">3</span>
+        </button>
+
+        <!-- User Profile Dropdown Placeholder -->
+        <div class="user-profile">
+            <div class="avatar">
+                <i class="ri-user-smile-line"></i>
+            </div>
+            <div class="user-info">
+                <span class="user-role">{{ userRole }}</span>
+                <span class="user-name">Mon Profil <i class="ri-arrow-down-s-line"></i></span>
+            </div>
+            <!-- Very basic logout button hook for now -->
+            <button class="logout-mini-btn" (click)="logout()" title="Se déconnecter">
+                <i class="ri-logout-box-r-line"></i>
+            </button>
+        </div>
+    </div>
+</header>
