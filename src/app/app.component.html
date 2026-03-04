@@ -1,0 +1,9 @@
+<div class="app-layout">
+    <!-- Global Theme Toggle Button -->
+    <button class="theme-toggle" (click)="themeService.toggleTheme()"
+        [attr.aria-label]="themeService.isDarkMode() ? 'Passer au mode clair' : 'Passer au mode sombre'">
+        <i [class]="themeService.isDarkMode() ? 'ri-sun-line' : 'ri-moon-line'"></i>
+    </button>
+
+    <router-outlet />
+</div>

@@ -1,0 +1,106 @@
+<div class="split-layout">
+
+    <!-- Right Side: Image Panel (mirrored for registration to look distinct from login) -->
+    <div class="image-panel">
+        <!-- Dark overlay for better text readability -->
+        <div class="image-overlay"></div>
+        <div class="branding">
+            <i class="ri-route-line"></i>
+            <h1>Rejoignez FleetSync</h1>
+            <p>La plateforme numéro 1 pour la gestion des expéditions, camions et chauffeurs. Prenez le contrôle de
+                votre flotte aujourd'hui.</p>
+        </div>
+    </div>
+
+    <!-- Left Side: Form Container -->
+    <div class="form-container">
+        <div class="auth-card register-card">
+            <div class="auth-header">
+                <h2>Créer un compte Client</h2>
+                <p>Rejoignez-nous pour gérer votre logistique en toute simplicité</p>
+            </div>
+
+            <div *ngIf="errorMessage" class="error-alert">
+                {{ errorMessage }}
+            </div>
+
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+                <div class="form-row">
+                    <div class="form-group flex-1">
+                        <label for="firstName">Prénom <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" id="firstName" formControlName="firstName" placeholder="Votre prénom"
+                                [class.invalid]="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched" />
+                        </div>
+                    </div>
+
+                    <div class="form-group flex-1">
+                        <label for="lastName">Nom <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" id="lastName" formControlName="lastName" placeholder="Votre nom"
+                                [class.invalid]="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Adresse e-mail <span class="required">*</span></label>
+                    <div class="input-wrapper">
+                        <input type="email" id="email" formControlName="email" placeholder="exemple@email.com"
+                            [class.invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Mot de passe <span class="required">*</span></label>
+                    <div class="input-wrapper">
+                        <input type="password" id="password" formControlName="password"
+                            placeholder="Au moins 8 caractères"
+                            [class.invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" />
+                    </div>
+                    <span class="error-text"
+                        *ngIf="registerForm.get('password')?.errors?.['minlength'] && registerForm.get('password')?.touched">
+                        Le mot de passe doit contenir au moins 8 caractères.
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Adresse complète <span class="required">*</span></label>
+                    <div class="input-wrapper">
+                        <textarea id="address" formControlName="address" placeholder="Numéro, rue, ville, code postal"
+                            rows="2"
+                            [class.invalid]="registerForm.get('address')?.invalid && registerForm.get('address')?.touched">
+             </textarea>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group flex-1">
+                        <label for="phone">Numéro de téléphone</label>
+                        <div class="input-wrapper">
+                            <input type="tel" id="phone" formControlName="phone" placeholder="+212 600000000" />
+                        </div>
+                    </div>
+
+                    <div class="form-group flex-1">
+                        <label for="companyName">Nom de l'entreprise</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="companyName" formControlName="companyName"
+                                placeholder="Facultatif" />
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" [disabled]="isLoading">
+                    <span *ngIf="!isLoading">S'inscrire</span>
+                    <span *ngIf="isLoading" class="loader"></span>
+                </button>
+
+                <div class="auth-footer">
+                    <p>Vous avez déjà un compte ? <a routerLink="/auth/login">Se connecter</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

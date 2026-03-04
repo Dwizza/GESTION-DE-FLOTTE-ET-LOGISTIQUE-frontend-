@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/* 
+  Global Styles & Theme Variables 
+  Orange Mango Theme
+*/
+
+:root {
+    /* Light Theme Colors */
+    --color-primary: #FF8C00;
+    --color-primary-hover: #FFA500;
+    --color-primary-light: rgba(255, 140, 0, 0.1);
+    --color-bg: #F4F7F6;
+    --color-surface: #FFFFFF;
+    --color-surface-hover: #F9FAFB;
+    --color-text: #1F2937;
+    --color-text-muted: #6B7280;
+    --color-border: #E5E7EB;
+    --color-error: #EF4444;
+    --color-error-bg: #FEE2E2;
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-glow: 0 0 15px rgba(255, 140, 0, 0.4);
+}
+
+[data-theme="dark"] {
+    /* Dark Theme Colors */
+    --color-primary: #FFA500;
+    --color-primary-hover: #FF8C00;
+    --color-primary-light: rgba(255, 165, 0, 0.15);
+    --color-bg: #121212;
+    --color-surface: #1E1E1E;
+    --color-surface-hover: #2D2D2D;
+    --color-text: #F9FAFB;
+    --color-text-muted: #9CA3AF;
+    --color-border: #374151;
+    --color-error: #F87171;
+    --color-error-bg: rgba(239, 68, 68, 0.1);
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 20px rgba(255, 165, 0, 0.3);
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Global Transitions for smooth theme switching */
+* {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Base button reset for custom UI */
+button {
+    font-family: 'Poppins', sans-serif;
+}
